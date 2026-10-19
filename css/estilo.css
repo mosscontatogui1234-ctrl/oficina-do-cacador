@@ -1,0 +1,260 @@
+/* ===== Oficina do Caçador — visual "Wilds escuro com fios dourados" (layout A) ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#08090b;color:#e6e1d6;font:15px/1.45 "Noto Sans",sans-serif;overflow:hidden;user-select:none}
+input,select,textarea{user-select:text;font:inherit;color:inherit}
+:root{--gold:#c9a65a;--gold2:#f0dcaa;--gold3:#f4e6c2;--line:#c9a65a2e;--soft:#ffffff0b;--dim:#8b8578;--txt:#efe9dc;--card:#0e1115;--col:#0b0d10;--bg:#08090b}
+#app{height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,#0b0d10 0%,#07080a 100%)}
+.carregando{margin:auto;font:600 16px Cinzel;color:var(--gold2);letter-spacing:2px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+[hidden]{display:none!important}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#2e2a22;border-radius:6px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:#4a4334;background-clip:padding-box;border:2px solid transparent}
+::-webkit-scrollbar-track{background:transparent}
+
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes art{from{opacity:0;transform:translateX(40px) scale(1.04)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+html[data-anim="1"] .in{animation:up .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*60ms)}
+
+/* ---------- topo ---------- */
+.topo{height:62px;display:flex;align-items:center;gap:26px;padding:0 28px;border-bottom:1px solid var(--line);flex:none;background:#07080a}
+.logo{font:700 19px Cinzel;letter-spacing:3px;color:var(--gold2);white-space:nowrap}
+.nav{display:flex;height:100%}
+.nav button{display:flex;align-items:center;padding:0 15px;font:600 14px Cinzel;letter-spacing:1px;color:var(--dim);position:relative;white-space:nowrap}
+.nav button:hover{color:var(--gold2)}
+.nav button.on{color:var(--gold2)}
+.nav button.on:after{content:"";position:absolute;left:15px;right:15px;bottom:-1px;height:2px;background:var(--gold)}
+
+/* no programa: o topo é a barra da janela (arrastar), com espaço para os botões do Windows */
+html[data-programa] .topo{-webkit-app-region:drag;padding-right:150px}
+html[data-programa] .topo button,html[data-programa] .topo input{-webkit-app-region:no-drag}
+html[data-programa] .fundo-j{-webkit-app-region:no-drag}
+
+/* ---------- estrutura do layout A ---------- */
+.corpo{flex:1;display:flex;min-height:0}
+.esq{flex:1;min-width:0;padding:24px 32px;display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.esq.rola{overflow-y:auto}
+.dir{width:500px;flex:none;border-left:1px solid var(--line);background:var(--col);padding:24px 26px;display:flex;flex-direction:column;min-height:0;overflow-y:auto}
+.dir.larga{width:700px}
+.dir>*,.esq>*{flex-shrink:0}
+.esq>.equip,.esq>.lista{flex-shrink:1}
+
+/* ---------- peças comuns ---------- */
+.emb{border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--gold),0 0 0 5px #0a0c0f,0 0 0 6px #c9a65a44;background:#000}
+.art{position:absolute;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%);mask-image:linear-gradient(90deg,transparent 0%,#000 35%);pointer-events:none}
+html[data-anim="1"] .art{animation:art 1s cubic-bezier(.2,.7,.2,1) both}
+h1{font:700 52px Cinzel;color:var(--gold3);line-height:1;letter-spacing:2px}
+.kick{font:600 11.5px "Noto Sans";letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.h2{font:700 13px Cinzel;letter-spacing:2.5px;color:var(--gold2);margin-bottom:10px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.h2 small{font:500 11.5px "Noto Sans";letter-spacing:0;text-transform:none;color:var(--dim)}
+.h2 .acoes{margin-left:auto;display:flex;gap:6px}
+.s{font-size:12.5px;color:var(--dim)}
+.n{font-weight:600;color:var(--txt)}
+.grow{flex:1;min-width:0}
+.ic{width:24px;height:24px;object-fit:contain;flex:none}
+.ic.p{width:18px;height:18px}
+.row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--soft)}
+.row:last-child{border-bottom:0}
+.vazio{color:#5d584f;font-style:italic}
+.corta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:4px;border:1px solid #c9a65a55;color:var(--gold2);font:600 13px "Noto Sans";background:#14120d;white-space:nowrap}
+.btn:hover{background:#221d12;border-color:var(--gold)}
+.btn.ouro{background:linear-gradient(180deg,#d9b86a,#b28a3c);color:#14100a;border-color:#e6c77e}
+.btn.ouro:hover{filter:brightness(1.08)}
+.btn.leve{border-color:transparent;background:none;color:var(--dim)}
+.btn.leve:hover{color:var(--gold2);background:#ffffff08}
+.btn.perigo:hover{color:#ff9c86;border-color:#a3412f}
+.x{width:22px;height:22px;border-radius:3px;color:#6e675b;display:inline-grid;place-items:center;font-size:16px;line-height:1;flex:none}
+.x:hover{color:#ff9c86;background:#ffffff0d}
+
+/* abas */
+.abas{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px;flex:none}
+.abas button{font:600 13px Cinzel;letter-spacing:1.5px;color:var(--dim);padding-bottom:10px}
+.abas button:hover{color:var(--gold2)}
+.abas button.on{color:var(--gold2);box-shadow:inset 0 -2px var(--gold)}
+
+/* fraquezas */
+.wk{display:flex;gap:6px;flex-wrap:wrap}
+.wk>span{display:flex;align-items:center;gap:7px;border:1px solid #c9a65a3a;border-radius:4px;padding:5px 10px;font-size:13.5px;background:#0a0c0f99}
+.wk>span.off{opacity:.35}
+.wk img{width:20px;height:20px;object-fit:contain}
+.st{font-style:normal;color:#e7c26a;letter-spacing:1px;font-size:13px;white-space:nowrap}
+.st .o{color:#3a352b;font-weight:400}
+.campo .seg{align-self:flex-start}
+
+/* joias */
+.decos{display:flex;gap:2px;align-items:center}
+.deco{width:26px;height:26px;border-radius:4px;display:grid;place-items:center;position:relative}
+.deco img{width:24px;height:24px}
+.deco.e img{opacity:.22;filter:grayscale(1)}
+.deco:hover{background:#ffffff10}
+.sharp{display:flex;height:9px;background:#000;border-radius:1px;overflow:hidden;box-shadow:0 0 0 1px #c9a65a33}
+.sharp i{display:block;height:100%}
+.pips{display:flex;gap:4px;flex:none}
+.pips i{width:8px;height:8px;transform:rotate(45deg);border:1px solid #5a513f}
+.pips i.on{background:var(--gold);border-color:var(--gold2)}
+.pips i.mais{background:#e2694a;border-color:#ff9c86}
+.ok{font:700 10px Cinzel;letter-spacing:2px;color:#0a0c0f;background:var(--gold);padding:2px 7px;border-radius:2px}
+.num{font:700 26px Cinzel;color:var(--gold3);line-height:1.1}
+.num em{font:600 12px "Noto Sans";font-style:normal;color:#e7c26a;margin-left:5px}
+
+/* ícone de arma pintado pela raridade */
+.arma-ic{display:inline-block;flex:none;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:var(--c,#ddd)}
+
+/* ---------- montador ---------- */
+.nome-build{font:700 34px Cinzel;color:var(--gold3);background:none;border:0;border-bottom:1px dashed transparent;outline:none;width:100%;letter-spacing:1px}
+.nome-build:hover,.nome-build:focus{border-bottom-color:#c9a65a66}
+/* Montador — painel de caçada (layout D) */
+.mt-topo{display:flex;align-items:center;gap:34px;padding:14px 32px;border-bottom:1px solid var(--line);flex:none}
+.mt-topo .nome-build{width:380px;font-size:30px;flex:none}
+.mt-stat .s{display:flex;gap:6px;align-items:center;margin-bottom:2px}
+.mt-stat .s img{width:16px;height:16px;object-fit:contain}
+.mt-afi{width:230px;flex:none}
+.mt-afi .s{margin-bottom:6px}
+.mt-equip{width:640px;flex:none;padding:20px 24px 16px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.mt-habs{flex:1;min-width:0;padding:20px 30px;overflow-y:auto}
+.mt-hab{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--soft)}
+.mt-hab img{width:30px;height:30px;object-fit:contain;flex:none}
+.mt-hab .grow{font-size:15.5px}
+.mt-nv{font:700 17px Cinzel;color:var(--gold3);width:42px;text-align:right}
+.mt-alvo{width:460px;flex:none;border-left:1px solid var(--line);background:var(--col);padding:22px 26px;position:relative;overflow-x:hidden;overflow-y:auto}
+.mt-render{position:absolute;right:-70px;top:10px;width:520px;max-height:420px;object-fit:contain;opacity:.3;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 35%,transparent 90%);mask-image:linear-gradient(180deg,#000 35%,transparent 90%)}
+.mt-hz{font:700 18px Cinzel;color:#bdb6a8;width:40px;text-align:right}
+.mt-hz.hi{color:var(--gold3)}
+.mt-nota{font:700 26px Cinzel;color:var(--gold3)}
+.mt-nota small{font-size:13px;color:var(--dim)}
+.emb.alvo{cursor:pointer}
+.emb.alvo:hover{box-shadow:0 0 0 2px var(--gold2),0 0 0 5px #0a0c0f,0 0 0 6px var(--gold)}
+.equip{flex:1;min-height:0;overflow-y:auto;margin-right:-10px;padding-right:10px}
+.slot{display:flex;align-items:center;gap:12px;padding:9px 8px;border-bottom:1px solid var(--soft);border-radius:4px;cursor:pointer}
+.slot:hover{background:#ffffff07}
+.slot .tp{width:74px;flex:none}
+.slot .icone{width:38px;height:38px;flex:none;display:grid;place-items:center}
+.slot .icone img{width:38px;height:38px;object-fit:contain}
+.slot.vazia .n{color:#5d584f;font-weight:500;font-style:italic}
+.rodape-montador{display:flex;gap:8px;flex:none;padding-top:4px}
+
+/* ---------- janela (escolher item) ---------- */
+#janela:empty{display:none}
+.fundo-j{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;z-index:50}
+html[data-anim="1"] .fundo-j{animation:fade .15s both}
+.jan{width:min(1100px,92vw);height:min(820px,88vh);background:#0c0e12;border:1px solid #c9a65a55;border-radius:10px;display:flex;flex-direction:column;box-shadow:0 30px 80px #000}
+.jan.peq{width:min(640px,92vw);height:auto;max-height:88vh}
+.jan-topo{padding:18px 22px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.jan-topo .t{display:flex;align-items:center;gap:12px}
+.jan-topo h3{font:700 18px Cinzel;color:var(--gold2);letter-spacing:1.5px}
+.busca{flex:1;background:#07080a;border:1px solid #c9a65a44;border-radius:4px;padding:9px 12px;outline:none}
+.busca:focus{border-color:var(--gold)}
+.filtros{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #c9a65a33;border-radius:20px;font-size:12.5px;color:#bdb6a8}
+.chip:hover{border-color:var(--gold);color:var(--gold2)}
+.chip.on{background:#2a2416;border-color:var(--gold);color:var(--gold2)}
+.chip img{width:18px;height:18px;object-fit:contain}
+.jan-lista{flex:1;overflow-y:auto;padding:6px 14px 14px}
+.it{display:flex;align-items:center;gap:14px;padding:9px 10px;border-radius:5px;border-bottom:1px solid var(--soft);cursor:pointer}
+.it:hover{background:#c9a65a14}
+.it.atual{box-shadow:inset 2px 0 var(--gold);background:#c9a65a10}
+.it .ico{width:40px;height:40px;flex:none;display:grid;place-items:center}
+.it .ico img{width:38px;height:38px;object-fit:contain}
+.it .sk{font-size:12.5px;color:#bdb6a8}
+.it .lado{text-align:right;font-size:12.5px;color:var(--dim);flex:none}
+.it .lado b{color:var(--gold3);font:700 16px Cinzel}
+.mais-it{padding:14px;text-align:center;color:var(--dim);font-size:13px}
+.campo{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.campo label{font-size:12.5px;color:var(--dim)}
+.campo input,.campo select{background:#07080a;border:1px solid #c9a65a44;border-radius:4px;padding:8px 10px;outline:none}
+.campo select option{background:#0c0e12}
+
+/* ---------- monstros ---------- */
+.mon-esq{position:relative;overflow:hidden;padding:36px 44px 24px}
+.mon-esq .art{right:28px;top:90px;width:min(62%,860px);height:calc(100% - 330px);object-position:right center}
+.facts{display:flex;margin-top:4px;position:relative;flex-wrap:wrap;row-gap:12px}
+.facts div{padding:0 22px;border-left:1px solid var(--line)}
+.facts div:first-child{padding-left:0;border-left:0}
+.facts b{display:block;font:700 21px Cinzel;color:var(--gold3);white-space:nowrap}
+.brasoes{display:flex;flex-wrap:wrap;gap:8px;position:relative;max-width:640px}
+.brasoes button{width:44px;height:44px;border-radius:50%;overflow:hidden;opacity:.55;transition:opacity .15s,transform .15s}
+.brasoes button img{width:44px;height:44px;display:block}
+.brasoes button:hover{opacity:1;transform:scale(1.08)}
+.brasoes button.on{opacity:1;box-shadow:0 0 0 2px var(--gold)}
+table{border-collapse:collapse;width:100%}
+.hz th{font:600 11px "Noto Sans";letter-spacing:1.2px;color:var(--dim);padding:6px 3px 10px;text-align:center;text-transform:uppercase;white-space:nowrap}
+.hz th img{width:20px;height:20px;vertical-align:middle}
+.hz th:first-child,.hz td:first-child{text-align:left}
+.hz td{padding:7px 3px;text-align:center;font-weight:600;border-top:1px solid var(--soft);vertical-align:top}
+.hz td span{display:inline-block;min-width:32px;padding:1px 0;border-radius:3px}
+.hz td span.hi{background:var(--gold);color:#14100a;font-weight:700}
+.hz td span.lo{color:#4d483f}
+.hz td small{display:block;font-size:11.5px;color:#a8894b;font-weight:500;line-height:1.35;margin-top:2px}
+.hz tr.sub td{border-top:0;padding-top:0;font-size:13px}
+.hz tr.sub td:first-child{padding-left:14px;color:#a8894b;font-weight:500;font-size:12px}
+.tag{display:inline-block;font:700 9.5px "Noto Sans";letter-spacing:1px;color:#0a0c0f;background:var(--gold);padding:1px 5px;border-radius:2px;margin-left:6px;vertical-align:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;padding:2px;gap:2px;flex-wrap:wrap}
+.seg button{color:var(--dim);font:600 12.5px "Noto Sans";padding:6px 11px;border-radius:3px}
+.seg button:hover{color:var(--gold2)}
+.seg button.on{background:#2a2416;color:var(--gold2);box-shadow:inset 0 0 0 1px #c9a65a66}
+.hpbig{font:700 50px Cinzel;color:var(--gold3);line-height:1}
+.hpbar{position:relative;height:14px;border-radius:3px;background:linear-gradient(90deg,#7a2b22,#b8452f 20%,#c9a65a 60%,#e9cf8e)}
+.hpbar .mk{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--gold3)}
+.vr{display:flex;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid var(--soft)}
+.vr:last-child{border-bottom:0}
+.vr .lb{width:140px}
+.vr .bar{flex:1;height:8px;background:#000;border-radius:2px;overflow:hidden}
+.vr .bar i{display:block;height:100%;background:linear-gradient(90deg,#8a6a2e,#e0c27a)}
+.vr .vv{width:100px;text-align:right;font:700 17px Cinzel;color:var(--gold3)}
+.vr.on .lb{color:var(--gold2);font-weight:600}
+.vr:not(.on){opacity:.6}
+.aprox{font-size:12px;color:#7d7668;margin-top:12px;line-height:1.5}
+.tip{color:#c9c2b4;font-size:14px;line-height:1.6}
+/* materiais e recompensas */
+.it-ic{display:inline-block;flex:none;object-fit:contain}
+.mat{display:flex;align-items:center;gap:10px;padding:5px 6px;border-bottom:1px solid var(--soft);border-radius:3px;cursor:pointer}
+.mat:hover{background:#ffffff08}
+.mat-q{font:700 14px Cinzel;color:var(--gold3);flex:none}
+.onde-mon{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--soft)}
+.onde-mon .emb{width:40px;height:40px;cursor:pointer}
+.onde-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.fch{font-size:12px;color:#bdb6a8;border:1px solid #c9a65a2e;border-radius:12px;padding:2px 9px;background:#ffffff05}
+.fch b{color:var(--gold3);font-weight:700}
+.fch i{font-style:normal;color:var(--dim);font-size:11px}
+.fch.agu{border-color:#9468e088;background:#9468e01a}
+.brasoes-mini{display:flex;flex-wrap:wrap;gap:10px;padding:4px 2px}
+.brasoes-mini .emb{width:38px;height:38px;cursor:pointer}
+.lista-at{margin:0 0 4px 18px;color:#cfc8b8;font-size:13.5px;line-height:1.55}
+.lista-at li{margin-bottom:5px}
+.recomp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.recomp-c{padding:12px 12px 8px}
+.lnk{color:var(--gold2);text-decoration:underline;cursor:pointer}
+.hz.missoes td,.hz.missoes th{text-align:left}
+.rec{display:flex;align-items:center;gap:12px;padding:8px 6px;border-bottom:1px solid var(--soft)}
+.rec .pos{width:22px;text-align:right;font:700 14px Cinzel;color:#5d584f;flex:none}
+.rec .val{text-align:right;flex:none}
+.rec .val b{display:block;font:700 18px Cinzel;color:var(--gold3)}
+.rec .btn{padding:5px 12px;flex:none}
+.rec-barra{display:flex;height:4px;margin-top:5px;background:#ffffff0d;border-radius:2px;overflow:hidden}
+.rec-barra i{display:block;height:100%}
+.rec-el{display:flex;align-items:center;gap:4px;font-size:12.5px;color:#bdb6a8;flex:none;white-space:nowrap}
+.rec-el img{width:18px;height:18px}
+.rec-el.off{opacity:.45}
+.rec-leg{display:inline-block;width:10px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.parte-hp{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.parte-hp i{display:block;height:5px;border-radius:2px;background:#c9a65a99}
+
+/* ---------- listas (armas / builds / amuletos) ---------- */
+.lista{flex:1;min-height:0;overflow-y:auto;margin-right:-10px;padding-right:10px}
+.linha{display:flex;align-items:center;gap:14px;padding:9px 10px;border-bottom:1px solid var(--soft);border-radius:4px;cursor:pointer}
+.linha:hover{background:#ffffff07}
+.linha.on{background:linear-gradient(90deg,#c9a65a1f,transparent);box-shadow:inset 2px 0 var(--gold)}
+.linha .pos{width:28px;text-align:right;font:700 14px Cinzel;color:#5d584f;flex:none}
+.linha .val{width:86px;text-align:right;flex:none}
+.linha .val b{display:block;font:700 18px Cinzel;color:var(--gold3)}
+.cartao{border:1px solid var(--line);border-radius:8px;padding:16px 18px;background:var(--card)}
+.vazio-grande{margin:auto;text-align:center;color:var(--dim);max-width:420px;line-height:1.6}
+.vazio-grande b{display:block;font:700 18px Cinzel;color:var(--gold2);margin-bottom:6px}
+
+#aviso{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:80;pointer-events:none}
+#aviso div{background:#1a1610;border:1px solid var(--gold);color:var(--gold2);padding:10px 18px;border-radius:6px;box-shadow:0 10px 30px #000;font-weight:600;animation:fade .2s both}

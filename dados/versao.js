@@ -1,0 +1,1 @@
+window.W = window.W || {}; W.versao = '2026-04-15T01:28:18+00:00'; W.baixado = '2026-10-19';

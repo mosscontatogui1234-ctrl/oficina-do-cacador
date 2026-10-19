@@ -62,6 +62,8 @@
   .mt-equip{border-top:0}
   .slot{gap:10px;padding:9px 4px;flex-wrap:wrap}
   .slot .tp{display:none}
+  .slot.vazia .tp{display:block;width:62px}
+  .slot.vazia>.grow{flex-basis:auto}
   .slot .decos{margin-left:48px}
   .slot .x{margin-left:auto}
   .mt-hab .grow{font-size:14.5px}

@@ -1,6 +1,6 @@
 // Oficina do Caçador — guarda o app no celular pra abrir rápido e sem internet.
 // VERSAO e LISTA são preenchidas pelo montar-site.ps1.
-const VERSAO = 'v1';
+const VERSAO = 'v2';
 const CACHE = 'oficina-' + VERSAO;
 const LISTA = ["./","index.html","manifest.json","instalar.js","css/celular.css","css/estilo.css","dados/amuletos.js","dados/armaduras.js","dados/armas.js","dados/conjuntos.js","dados/fontes.js","dados/habilidades.js","dados/joias.js","dados/kiranico.js","dados/locais.js","dados/monstros.js","dados/versao.js","fontes/Cinzel-500-latin-ext.woff2","fontes/Cinzel-500-latin.woff2","fontes/Cinzel-600-latin-ext.woff2","fontes/Cinzel-600-latin.woff2","fontes/Cinzel-700-latin-ext.woff2","fontes/Cinzel-700-latin.woff2","fontes/fontes.css","fontes/NotoSans-400-latin-ext.woff2","fontes/NotoSans-400-latin.woff2","fontes/NotoSans-500-latin-ext.woff2","fontes/NotoSans-500-latin.woff2","fontes/NotoSans-600-latin-ext.woff2","fontes/NotoSans-600-latin.woff2","fontes/NotoSans-700-latin-ext.woff2","fontes/NotoSans-700-latin.woff2","js/amuletos.js","js/armas.js","js/builds.js","js/calculo.js","js/escolher.js","js/iniciar.js","js/materiais.js","js/monstros.js","js/montador.js","js/nucleo.js","js/traducoes.js"];
 
